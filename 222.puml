@@ -1,0 +1,16 @@
+//智能合约架构图
+@startuml
+actor User as U
+package "Ethereum Blockchain" {
+    component "Smart Contract" as SC
+    component "Blockchain Node" as Node
+}
+
+package "Oracle Service" {
+    component "Chainlink Oracle" as Oracle
+}
+
+U --> SC : Interact with contract
+SC --> Oracle : Fetch price from Oracle --> SC : Return verified price
+SC --> Node : Store price on blockchain
+@enduml

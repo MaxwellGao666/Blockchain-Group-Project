@@ -1,0 +1,14 @@
+@startuml
+actor User as U
+entity "User Interface" as UI
+entity "Smart Contract" as SC
+entity "Chainlink Oracle" as Oracle
+entity "Blockchain Node" as Node
+
+U --> UI : Request Price
+UI --> SC : Send query to smart contract
+SC --> Oracle : Request latest price
+Oracle --> SC : Return price data
+SC --> Node : Store data in blockchain
+SC --> UI : Return latest price
+@enduml

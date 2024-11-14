@@ -1,0 +1,21 @@
+@startuml
+actor User as U
+package "User Interface (UI)" {
+    U --> UI : Request Price
+}
+
+package "Blockchain" {
+    component "Smart Contract" as SC
+    component "Blockchain Node" as Node
+}
+
+package "Oracle Service" {
+    component "Chainlink Oracle" as Oracle
+}
+
+UI --> SC : Query latest price
+SC --> Oracle : Fetch price data
+Oracle --> SC : Return price data
+SC --> Node : Store price data in blockchain
+SC --> UI : Send the latest price
+@enduml
